@@ -10,11 +10,10 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 class UserRegistrationController extends AbstractFOSRestController
 {
     /**
-     * @Rest\Route("/user-registration/test", methods={"GET"})
+     * @Rest\Route("/user-registration/test", methods={"GET"}, name="registration")
      */
-    public function test(){
+    public function registrationAction(){
 
-//        $this->setViewHandler();
         $data = ['prenom' => 'vivien', 'nom' => 'marnier', 'age' => '28'];
         $view = $this->view($data, 200);
 
