@@ -6,15 +6,15 @@ namespace App\Controller;
 
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Symfony\Component\HttpFoundation\Request;
 
 class UserRegistrationController extends AbstractFOSRestController
 {
     /**
-     * @Rest\Route("/user-registration/test", methods={"GET"})
+     * @Rest\Post("/user-registration/test", name="registration")
      */
-    public function test(){
+    public function registrationAction(Request $request){
 
-//        $this->setViewHandler();
         $data = ['prenom' => 'vivien', 'nom' => 'marnier', 'age' => '28'];
         $view = $this->view($data, 200);
 
