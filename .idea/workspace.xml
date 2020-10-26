@@ -19,10 +19,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e48f5ab4-1b08-4bc5-a945-da72cd5faae4" name="Default Changelist" comment="Installation et configuration de fos rest bundle + init UserRegistrationController + routes">
+    <list default="true" id="e48f5ab4-1b08-4bc5-a945-da72cd5faae4" name="Default Changelist" comment="Installation et configuration de lexik jwt (génération token)">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/aplaceforgeek-core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aplaceforgeek-core.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/fos_rest.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/fos_rest.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/lexik_jwt_authentication.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/lexik_jwt_authentication.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserRegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserRegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +45,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="init-lexik-jwt" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -92,6 +101,47 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
       <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/lexik/jwt-authentication-bundle" />
+      <path value="$PROJECT_DIR$/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/vendor/symfony/inflector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-code" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-eventmanager" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-zendframework-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/vendor/webimpress/safe-writer" />
+      <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/sql-formatter" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/reflection" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/vendor/symfony/form" />
+      <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/vendor/nelmio/cors-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iNGjf6abtmrqtjAQ6rOytyHIfu" />
@@ -104,7 +154,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../aplaceforgeek" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="terminal" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -118,8 +168,33 @@
       <option name="presentableId" value="Default" />
       <updated>1601740772175</updated>
       <workItem from="1601740773201" duration="2350000" />
-      <workItem from="1601813383674" duration="7436000" />
+      <workItem from="1601813383674" duration="7616000" />
+      <workItem from="1601830781658" duration="7465000" />
+      <workItem from="1601888642278" duration="16219000" />
+      <workItem from="1602245359565" duration="3158000" />
+      <workItem from="1602324780990" duration="376000" />
+      <workItem from="1602362844887" duration="3633000" />
+      <workItem from="1602410381875" duration="4609000" />
+      <workItem from="1602429867571" duration="2219000" />
+      <workItem from="1602502721144" duration="1215000" />
+      <workItem from="1603443858863" duration="3595000" />
+      <workItem from="1603700854149" duration="841000" />
     </task>
+    <task id="LOCAL-00001" summary="Installation et configuration de fos rest bundle + init UserRegistrationController + routes">
+      <created>1601821056043</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1601821056043</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Installation et configuration de lexik jwt (génération token)">
+      <created>1601839195897</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1601839195897</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,17 +214,26 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Installation et configuration de fos rest bundle + init UserRegistrationController + routes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Installation et configuration de fos rest bundle + init UserRegistrationController + routes" />
+    <MESSAGE value="Installation et configuration de lexik jwt (génération token)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Installation et configuration de lexik jwt (génération token)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="860" y="355" key="#CLI_Interpreters" timestamp="1601740882567">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="860" y="355" key="#CLI_Interpreters/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1601740882567" />
-    <state x="1060" y="441" key="FileChooserDialogImpl" timestamp="1601741250921">
+    <state x="1033" y="502" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601836904860">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1060" y="441" key="FileChooserDialogImpl/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1601741250921" />
+    <state x="1033" y="502" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1601836904860" />
+    <state x="1010" y="455" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1601908882917">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1010" y="455" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1601908882917" />
+    <state x="1060" y="441" key="FileChooserDialogImpl" timestamp="1602502741192">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1060" y="441" key="FileChooserDialogImpl/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1602502741192" />
     <state x="1104" y="620" key="Github.CreateGistDialog" timestamp="1601741040541">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -158,14 +242,26 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1001" y="566" width="862" height="503" key="Github.ShareDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1601740977245" />
-    <state x="1017" y="423" key="NewPhpClassDialog" timestamp="1601814966429">
+    <state x="1017" y="423" key="NewPhpClassDialog" timestamp="1601895817122">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1017" y="423" key="NewPhpClassDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1601814966429" />
+    <state x="1017" y="423" key="NewPhpClassDialog/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1601895817122" />
     <state x="781" y="345" key="SettingsEditor" timestamp="1601813480219">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="345" key="SettingsEditor/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1601813480219" />
+    <state x="1001" y="441" width="540" height="524" key="StructurePopup" timestamp="1601897499920">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1001" y="441" width="540" height="524" key="StructurePopup/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1601897499920" />
+    <state x="872" y="433" key="Vcs.Push.Dialog.v2" timestamp="1601839202078">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="872" y="433" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1601839202078" />
+    <state x="987" y="299" width="585" height="801" key="find.popup" timestamp="1602365860534">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="987" y="299" width="585" height="801" key="find.popup/0.0.2560.1400/-1920.0.1920.1040@0.0.2560.1400" timestamp="1602365860534" />
     <state x="92" y="92" width="2376" height="1216" key="git4idea.log.GitShowExternalLogAction" timestamp="1601741303419">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

@@ -1,13 +1,14 @@
 security:
     encoders:
-        # this internal class is used by Symfony to represent in-memory users
-        Symfony\Component\Security\Core\User\User: 'auto'
+        App\Entity\User:
+            algorithm: auto
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        users_in_memory:
-            memory:
-                users:
-                    johndoe: { password: '$argon2id$v=19$m=65536,t=4,p=1$bnNVbGYzM2JPRzlIRVJMeg$umbt5fnzGgPa6kdiEz28x99O9jE4x0fT54AENlZ/6p0', roles: ['ROLE_ADMIN'] }
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
     firewalls:
         login:
             pattern: ^/api/login
@@ -17,7 +18,9 @@ security:
                 check_path: /api/login_check
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
-
+        registration:
+            pattern: ^/api/user-registration
+            anonymous: true
         api:
             pattern: ^/api
             stateless: true
@@ -35,5 +38,6 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
-        -
+        - { path: ^/api/user-registration, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api,       roles: [IS_AUTHENTICATED_FULLY, ROLE_USER] }
+        - { path: ^/api/admin, roles: [IS_AUTHENTICATED_FULLY, ROLE_ADMIN] }
