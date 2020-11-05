@@ -1,7 +1,26 @@
 fos_rest:
-  body_listener: true
+  param_fetcher_listener: true
+  body_converter:
+    enabled: true
+    validate: true
+    validation_errors_argument: violations
   view:
-    view_response_listener:  true
+    view_response_listener: false
+  serializer:
+    groups: ['Default']
+    serialize_null: true
   format_listener:
     rules:
-      - { path: ^/api, prefer_extension: true, fallback_format: json, priorities: [ json ] }
+      - { path: '^/api', priorities: [ 'json' ], fallback_format: 'json' }
+  exception:
+    enabled: true
+    codes:
+      { App\Exception\ResourceValidationException: 400,
+        Doctrine\ORM\EntityNotFoundException: 500
+        \Exception: 500
+      }
+    messages:
+      { App\Exception\ResourceValidationException: true,
+        Doctrine\ORM\EntityNotFoundException: true
+        \Exception: true
+      }
