@@ -46,7 +46,7 @@ class UserRegistrationController extends AbstractFOSRestController
 
     /**
      * @Rest\Post("/user-registration/registration", name="registration")
-     * @param $request
+     * @param Request $request
      * @return Response
      */
     public function register(Request $request){
@@ -58,10 +58,12 @@ class UserRegistrationController extends AbstractFOSRestController
             }else{
                 try{
                     $user->setPassword($this->passwordEncoder->encodePassword($user,$request->get('password')));
+                    $user->setActive(true);
                     $this->entityManager->persist($user);
                     $this->entityManager->flush();
                     $view = $this->view('success', 200);
                 }catch(\Exception $e){
+                    dump($e->getMessage());exit;
                     if($e instanceof UniqueConstraintViolationException){
                         $view = $this->view("The email provided already has an account!", 500);
                     }else{
