@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\PublicationRepository;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PublicationRepository::class)
@@ -19,7 +20,9 @@ class Publication
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=150, nullable=true)
+     * @ORM\Column(type="string", length=150, nullable=false)
+     * @Assert\Length(max="150")
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -30,19 +33,22 @@ class Publication
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
      */
     private $date;
 
     /**
-     * @Serializer\Exclude()
-     * @ORM\ManyToOne(targetEntity=Game::class, inversedBy="publications")
+     * @Serializer\Accessor(getter="getGame", setter="setName")
+     * @ORM\ManyToOne(targetEntity=Game::class, inversedBy="publications", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank()
      */
     private $game;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="publications")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank()
      */
     private $author;
 

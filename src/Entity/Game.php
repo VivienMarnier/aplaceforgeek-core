@@ -44,6 +44,7 @@ class Game
     /**
      * @Serializer\Exclude()
      * @ORM\OneToMany(targetEntity=Publication::class, mappedBy="game", orphanRemoval=true)
+     * @ORM\OrderBy({"date" = "DESC"})
      */
     private $publications;
 

@@ -37,7 +37,7 @@ class GameController extends AbstractFOSRestController
     }
 
     /**
-     * @Rest\Post("/admin/games/create", name="create-game")
+     * @Rest\Post("/admin/games", name="create-game")
      * @ParamConverter("game", converter="fos_rest.request_body")
      * @param Game $game
      * @param ConstraintViolationList $violations
@@ -230,7 +230,7 @@ class GameController extends AbstractFOSRestController
     }
 
     /**
-     * @Rest\Put("/games/subscribe/{id}", name="subscribe_game")
+     * @Rest\Put("/games/{id}/subscribe", name="subscribe_game")
      * @param int $id
      * @param GameRepository $gameRepository
      * @return Response
@@ -248,6 +248,30 @@ class GameController extends AbstractFOSRestController
             $view = $this->view($dbGame, 200);
         }catch (\Exception $e){
             throw new \Exception("Unable for user to subscribe to game " . $dbGame->getId() . " at this time.");
+        }
+
+        return $this->handleView($view);
+    }
+
+    /**
+     * @Rest\Delete("/games/{id}/unsubscribe", name="unsubscribe_game")
+     * @param int $id
+     * @param GameRepository $gameRepository
+     * @return Response
+     */
+    public function unsubscribe(int $id, GameRepository $gameRepository){
+        $user = $this->getUser();
+        $dbGame = $gameRepository->find($id);
+        if(!$dbGame){
+            throw new EntityNotFoundException("No game found for id " . $id);
+        }
+
+        try{
+            $dbGame->removeSubscriber($user);
+            $this->entityManager->flush();
+            $view = $this->view($id, 200);
+        }catch (\Exception $e){
+            throw new \Exception("Unable for user to unsubscribe to game " . $dbGame->getId() . " at this time.");
         }
 
         return $this->handleView($view);

@@ -20,10 +20,6 @@ class AbstractRepository extends ServiceEntityRepository
 
     protected function paginate(QueryBuilder $qb, $limit = 10, $offset = 0)
     {
-//        if (0 == $limit || 0 == $offset) {
-//            throw new \LogicException('$limit & $offset must be greater than 0.');
-//        }
-
         $pager = new Pagerfanta(new QueryAdapter($qb));
         $currentPage = ceil(($offset + 1) / $limit);
         $pager->setMaxPerPage((int) $limit);

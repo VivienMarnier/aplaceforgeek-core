@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Publication;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -47,4 +48,26 @@ class PublicationRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function getUserFeed(Collection $games){
+
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT p, g
+             FROM App\Entity\Publication p
+             INNER JOIN p.game = g
+             WHERE p.game IN (:games)
+             ORDER BY p.date DESC'
+        )->setParameter('games', $games);
+
+        return $query->getArrayResult();
+
+        $qb = $this->createQueryBuilder('p');
+        $qb->select('p','g');
+        $qb->leftJoin('App\Entity\Game','g','p.game = g')
+        ->where('p.game IN (:games)')
+        ->addOrderBy('p.date','DESC')
+        ->setParameter('games', $games);
+
+        return $qb->getQuery()->getArrayResult();
+    }
 }

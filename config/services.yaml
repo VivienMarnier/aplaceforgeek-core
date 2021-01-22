@@ -35,9 +35,3 @@ services:
         tags:
             - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
 
-    App\Normalizer\EntityNormalizer:
-        public: false
-        autowire: true
-        autoconfigure: true
-        tags:
-            - { name: serializer.normalizer }

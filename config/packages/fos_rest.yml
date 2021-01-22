@@ -15,12 +15,14 @@ fos_rest:
   exception:
     enabled: true
     codes:
-      { App\Exception\ResourceValidationException: 400,
+      {
+        App\Exception\ResourceValidationException: 400,
         Doctrine\ORM\EntityNotFoundException: 500
         \Exception: 500
       }
     messages:
-      { App\Exception\ResourceValidationException: true,
+      {
+        App\Exception\ResourceValidationException: true,
         Doctrine\ORM\EntityNotFoundException: true
         \Exception: true
       }
